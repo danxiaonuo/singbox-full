@@ -110,7 +110,7 @@ RUN set -eux && \
    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true && \
    sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd && \
    sed -i -e 's/mouse=/mouse-=/g' /usr/share/vim/vim*/defaults.vim && \
-   mkdir -p /etc/sing-box /www && \
+   mkdir -p /etc/sing-box /ssl /www && \
    /bin/zsh
    
 # 拷贝二进制文件
@@ -121,6 +121,7 @@ COPY --from=singbox /usr/bin/sing-box /usr/bin/sing-box
 
 # 拷贝文件
 COPY ["./docker-entrypoint.sh", "/usr/bin/"]
+COPY ["./conf/nginx/ssl", "/ssl"]
 COPY ["./conf/nginx/www", "/www"]
 COPY ["./conf/nginx/vhost/default.conf", "/data/nginx/conf/vhost/default.conf"]
 COPY ["./conf/sing-box", "/etc/sing-box"]

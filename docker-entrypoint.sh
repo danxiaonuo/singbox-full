@@ -121,7 +121,7 @@ server {
     #    return 301 https://\$host\$request_uri;
     #}
     # 开启SSL
-    # include /ssl/xiaonuo.live/xiaonuo.live.conf;
+    include /ssl/xiaonuo.live/xiaonuo.live.conf;
     # 根目录
     root /www;
     # 站点索引设置
