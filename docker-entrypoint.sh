@@ -100,9 +100,9 @@ upstream trojan-splitflow {
 }
 
 # 分流
-map \$http_x_group_env \$svc_upstream {
-    ~*vmess vmess-splitflow;
-    ~*trojan trojan-splitflow;
+map \$request_uri \$backend_name {
+    ${VMESS_WSPATH} vmess-splitflow;
+    ${TROJAN_WSPATH} trojan-splitflow;
 
 }
 
@@ -143,11 +143,20 @@ server {
     access_log logs/default.log combined;
     error_log logs/default.log error;
     # 路由
-    location ^~ /xiaonuo {
+    location ^~ ${VMESS_WSPATH} {
              # 开启websocket
              include websocket.conf;
              # 反向代理
-             proxy_pass http://\$svc_upstream;
+             proxy_pass http://\$backend_name;
+             # 日志
+             access_log logs/xiaonuo.log combined;
+             error_log logs/xiaonuo.log error;
+    }
+    location ^~ ${TROJAN_WSPATH} {
+             # 开启websocket
+             include websocket.conf;
+             # 反向代理
+             proxy_pass http://\$backend_name;
              # 日志
              access_log logs/xiaonuo.log combined;
              error_log logs/xiaonuo.log error;
