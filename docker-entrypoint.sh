@@ -135,24 +135,15 @@ server {
     # include php.conf;
     # 开启rewrite
     # include /rewrite/default.conf;
-    # 根目录
-    root /www;
-    # 站点索引设置
-    index forum.php index.html index.htm default.php default.htm default.html index.php;
     # 日志
     access_log logs/default.log combined;
     error_log logs/default.log error;
     # 路由
-    location ^~ ${VMESS_WSPATH} {
-             # 开启websocket
-             include websocket.conf;
-             # 反向代理
-             proxy_pass http://\$backend_name;
-             # 日志
-             access_log logs/xiaonuo.log combined;
-             error_log logs/xiaonuo.log error;
-    }
-    location ^~ ${TROJAN_WSPATH} {
+    location ^~ / {
+             # 根目录
+             root /www;
+	     # 站点索引设置
+             index index.html index.htm default.htm default.html forum.php default.php index.php;
              # 开启websocket
              include websocket.conf;
              # 反向代理
