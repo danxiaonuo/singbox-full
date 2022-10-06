@@ -122,6 +122,10 @@ server {
     #}
     # 开启SSL
     # include /ssl/xiaonuo.live/xiaonuo.live.conf;
+    # 根目录
+    root /www;
+    # 站点索引设置
+    index index.html index.htm default.htm default.html forum.php default.php index.php;
     # 启用流量控制
     # 限制当前站点最大并发数
     # limit_conn perserver 200;
@@ -139,11 +143,16 @@ server {
     access_log logs/default.log combined;
     error_log logs/default.log error;
     # 路由
-    location ^~ / {
-             # 根目录
-             root /www;
-	     # 站点索引设置
-             index index.html index.htm default.htm default.html forum.php default.php index.php;
+    location ^~ ${VMESS_WSPATH} {
+             # 开启websocket
+             include websocket.conf;
+             # 反向代理
+             proxy_pass http://\$backend_name;
+             # 日志
+             access_log logs/xiaonuo.log combined;
+             error_log logs/xiaonuo.log error;
+    }
+    location ^~ ${TROJAN_WSPATH} {
              # 开启websocket
              include websocket.conf;
              # 反向代理
