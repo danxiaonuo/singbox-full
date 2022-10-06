@@ -18,7 +18,7 @@ cat <<-EOF > /etc/sing-box/vmess.json
             "type":"vmess",
             "tag":"vmess-in",
             "listen":"::",
-            "listen_port":${PORT},
+            "listen_port":${VMESS_PORT},
             "tcp_fast_open":true,
             "udp_fragment":true,
             "sniff":true,
@@ -27,14 +27,14 @@ cat <<-EOF > /etc/sing-box/vmess.json
             "proxy_protocol_accept_no_header":false,
             "users":[
                 {
-                    "name":"${NAME}",
-                    "uuid":"${UUID}",
-                    "alterId":${ALTER_ID}
+                    "name":"${VMESS_NAME}",
+                    "uuid":"${VMESS_UUID}",
+                    "alterId":${VMESS_ALTER_ID}
                 }
             ],
             "transport":{
                 "type":"ws",
-                "path":"${WSPATH}",
+                "path":"${VMESS_WSPATH}",
                 "max_early_data":0,
                 "early_data_header_name":"Sec-WebSocket-Protocol"
             }
@@ -59,7 +59,7 @@ cat <<-EOF > /etc/sing-box/trojan.json
             "type":"trojan",
             "tag":"trojan-in",
             "listen":"::",
-            "listen_port":${PORT},
+            "listen_port":${TROJAN_PORT},
             "tcp_fast_open":true,
             "udp_fragment":true,
             "sniff":true,
@@ -69,13 +69,13 @@ cat <<-EOF > /etc/sing-box/trojan.json
             "proxy_protocol_accept_no_header":false,
             "users":[
                 {
-                    "name":"${NAME}",
-                    "password":"${pwd}"
+                    "name":"${TROJAN_NAME}",
+                    "password":"${TROJAN_pwd}"
                 }
             ],
             "transport":{
                 "type":"ws",
-                "path":"${WSPATH}",
+                "path":"${TROJAN_WSPATH}",
                 "max_early_data":0,
                 "early_data_header_name":"Sec-WebSocket-Protocol"
             }
