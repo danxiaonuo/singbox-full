@@ -70,7 +70,7 @@ cat <<-EOF > /etc/sing-box/trojan.json
             "users":[
                 {
                     "name":"${TROJAN_NAME}",
-                    "password":"${TROJAN_pwd}"
+                    "password":"${TROJAN_PWD}"
                 }
             ],
             "transport":{
