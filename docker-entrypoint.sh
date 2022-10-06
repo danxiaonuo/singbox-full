@@ -117,9 +117,9 @@ server {
     # 指定编码
     charset utf-8;
     # SSL跳转 
-    if (\$ssl_protocol = "") {
-        return 301 https://\$host\$request_uri;
-    }
+    #if (\$ssl_protocol = "") {
+    #    return 301 https://\$host\$request_uri;
+    #}
     # 开启SSL
     # include /ssl/xiaonuo.live/xiaonuo.live.conf;
     # 启用流量控制
