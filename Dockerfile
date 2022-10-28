@@ -71,6 +71,8 @@ ARG SINGBOX_BUILD_DEPS="\
       # SINGBOX
       zsh \
       bash \
+      bash-doc \
+      bash-completion \
       linux-headers \
       build-base \
       zlib-dev \
