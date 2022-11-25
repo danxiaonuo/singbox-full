@@ -11,7 +11,7 @@ FROM ${BUILD_NGINX_IMAGE} as nginx
 FROM ${BUILD_SINGBOX_IMAGE} as singbox
 
 # 指定创建的基础镜像
-FROM golang:alpine
+FROM alpine:latest
 
 # 作者描述信息
 MAINTAINER danxiaonuo
