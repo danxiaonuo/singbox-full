@@ -78,7 +78,6 @@ ARG SINGBOX_BUILD_DEPS="\
       zlib-dev \
       openssl \
       openssl-dev \
-      tor \
       libevent-dev \
       bind-tools \
       iproute2 \
