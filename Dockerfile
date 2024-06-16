@@ -106,6 +106,7 @@ ARG PKG_DEPS="\
     fonts-wqy-microhei \
     fonts-arphic-ukai \
     fonts-arphic-uming \
+    supervisor \
     ca-certificates"
 ENV PKG_DEPS=$PKG_DEPS
 
