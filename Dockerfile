@@ -166,6 +166,11 @@ adduser --quiet --system --disabled-login --ingroup nginx --home /data/nginx --n
     nginx -V && \
     nginx -t
 
+# 授予文件权限
+RUN set -eux && \
+    mkdir -p /etc/sing-box && \
+    chmod a+x /usr/bin/docker-entrypoint.sh /usr/bin/sing-box
+    
 # ***** 入口 *****
 ENTRYPOINT ["docker-entrypoint.sh"]
 
