@@ -31,10 +31,6 @@ cat <<-EOF > /etc/sing-box/vmess.json
                 "path":"${VMESS_WSPATH}",
                 "max_early_data":0,
                 "early_data_header_name":"Sec-WebSocket-Protocol"
-            },
-            "sniffing":{
-                "enabled":true,
-                "override_destination":true
             }
         }
     ],
@@ -69,10 +65,6 @@ cat <<-EOF > /etc/sing-box/trojan.json
                 "path":"${TROJAN_WSPATH}",
                 "max_early_data":0,
                 "early_data_header_name":"Sec-WebSocket-Protocol"
-            },
-            "sniffing":{
-                "enabled":true,
-                "override_destination":true
             }
         }
     ],
