@@ -19,12 +19,6 @@ cat <<-EOF > /etc/sing-box/vmess.json
             "tag":"vmess-in",
             "listen":"::",
             "listen_port":${VMESS_PORT},
-            "tcp_fast_open":true,
-            "udp_fragment":true,
-            "sniff":true,
-            "sniff_override_destination":true,
-            "proxy_protocol":false,
-            "proxy_protocol_accept_no_header":false,
             "users":[
                 {
                     "name":"${VMESS_NAME}",
@@ -37,6 +31,10 @@ cat <<-EOF > /etc/sing-box/vmess.json
                 "path":"${VMESS_WSPATH}",
                 "max_early_data":0,
                 "early_data_header_name":"Sec-WebSocket-Protocol"
+            },
+            "sniffing":{
+                "enabled":true,
+                "override_destination":true
             }
         }
     ],
@@ -60,13 +58,6 @@ cat <<-EOF > /etc/sing-box/trojan.json
             "tag":"trojan-in",
             "listen":"::",
             "listen_port":${TROJAN_PORT},
-            "tcp_fast_open":true,
-            "udp_fragment":true,
-            "sniff":true,
-            "sniff_override_destination":true,
-            "udp_timeout":300,
-            "proxy_protocol":false,
-            "proxy_protocol_accept_no_header":false,
             "users":[
                 {
                     "name":"${TROJAN_NAME}",
@@ -78,6 +69,10 @@ cat <<-EOF > /etc/sing-box/trojan.json
                 "path":"${TROJAN_WSPATH}",
                 "max_early_data":0,
                 "early_data_header_name":"Sec-WebSocket-Protocol"
+            },
+            "sniffing":{
+                "enabled":true,
+                "override_destination":true
             }
         }
     ],
