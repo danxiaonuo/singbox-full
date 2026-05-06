@@ -19,6 +19,9 @@ cat <<-EOF > /etc/sing-box/vmess.json
             "tag":"vmess-in",
             "listen":"::",
             "listen_port":${VMESS_PORT},
+            "tcp_fast_open":true,
+            "udp_fragment":true,
+            "disable_tcp_keep_alive": false,
             "users":[
                 {
                     "name":"${VMESS_NAME}",
@@ -54,6 +57,9 @@ cat <<-EOF > /etc/sing-box/trojan.json
             "tag":"trojan-in",
             "listen":"::",
             "listen_port":${TROJAN_PORT},
+            "tcp_fast_open":true,
+            "udp_fragment":true,
+            "disable_tcp_keep_alive": false,
             "users":[
                 {
                     "name":"${TROJAN_NAME}",
